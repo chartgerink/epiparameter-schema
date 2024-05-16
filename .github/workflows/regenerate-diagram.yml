@@ -25,7 +25,8 @@ jobs:
 
         - name: Install dependencies
           run: npm install
-
+        - name: Format schema.prisma
+          run: npx prisma format
         - name: Generate Prisma diagram
           run: npx prisma generate
 
@@ -33,5 +34,5 @@ jobs:
           with:
             author_name: github-action-bot
             author_email: github-action-bot@users.noreply.github.com
-            message: "Update `ERD.svg`"
-            add: './ERD.svg'
+            message: "Update `ERD.svg`, format `schema.prisma`"
+            add: './'
