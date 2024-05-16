@@ -19,17 +19,17 @@ enum ParameterType {
 }
 
 enum ValueType {
-    Mean
+  Mean
 }
 
 model Parameter {
   id                                       Int           @id @default(autoincrement())
   pathogen                                 Pathogen      @relation(fields: [pathogenId], references: [id])
-  parameterType                                     ParameterType
-  valueType                               ValueType
+  parameterType                            ParameterType
+  valueType                                ValueType
   Value                                    Float
-  valueLowerBound                        Float
-  valueUpperBound                        Float
+  valueLowerBound                          Float
+  valueUpperBound                          Float
   Extrinsic                                String
   Unit                                     String
   Uncertainty_Paired_Type                  String
@@ -80,11 +80,11 @@ model Parameter {
   region                                   Region        @relation(fields: [regionId], references: [id])
   outbreak                                 Outbreak      @relation(fields: [outbreakId], references: [id])
   models                                   Model         @relation(fields: [modelId], references: [id])
-  source                                  Source       @relation(fields: [sourceId], references: [id])
+  source                                   Source        @relation(fields: [sourceId], references: [id])
   pathogenId                               Int
   outbreakId                               Int
   modelId                                  Int
-  sourceId                                Int
+  sourceId                                 Int
   regionId                                 Int
 }
 
@@ -99,7 +99,7 @@ model Pathogen {
   Disease_Vector_borne String
   Parameter            Parameter[]
   Model                Model[]
-  Source              Source[]
+  Source               Source[]
   Outbreak             Outbreak[]
 }
 
@@ -114,7 +114,7 @@ model Model {
   Transmission_Route String
   Assumption         String
   Parameter          Parameter[]
-  pathogen                 Pathogen    @relation(fields: [pathogenId], references: [id])
+  pathogen           Pathogen    @relation(fields: [pathogenId], references: [id])
   pathogenId         Int
 }
 
@@ -140,7 +140,7 @@ model Source {
 
 model Outbreak {
   id                        Int      @id @default(autoincrement())
-  pathogen                        Pathogen @relation(fields: [pathogenId], references: [id])
+  pathogen                  Pathogen @relation(fields: [pathogenId], references: [id])
   start                     DateTime
   end                       DateTime
   Size                      String
