@@ -70,7 +70,7 @@ model Parameter {
   Risk_factor_Occupation                   String
   Risk_factor_Significance                 String
   Risk_factor_Adjust                       String
-  region Region
+  region                                   Region        @relation(fields: [regionId], references: [id])
   outbreak                                 Outbreak      @relation(fields: [outbreakId], references: [id])
   models                                   Model         @relation(fields: [modelId], references: [id])
   article                                  Article       @relation(fields: [articleId], references: [id])
@@ -78,6 +78,7 @@ model Parameter {
   outbreakId                               Int
   modelId                                  Int
   articleId                                Int
+  regionId                                 Int
 }
 
 model Pathogen {
@@ -131,8 +132,8 @@ model Article {
 }
 
 model Outbreak {
-  id                        Int         @id @default(autoincrement())
-  ID                        Pathogen    @relation(fields: [pathogenId], references: [id])
+  id                        Int      @id @default(autoincrement())
+  ID                        Pathogen @relation(fields: [pathogenId], references: [id])
   start                     DateTime
   end                       DateTime
   Size                      String
@@ -143,14 +144,19 @@ model Outbreak {
   Cases_Severe_hospitalized String
   Cases_Deaths              String
   Case_Mode_Detection       String
-  region Region
+  region                    Region   @relation(fields: [regionId], references: [id])
 
-  Parameter                 Parameter[]
-  pathogenId                Int
+  Parameter  Parameter[]
+  pathogenId Int
+  regionId   Int
 }
 
 model Region {
-  Location                  String
-  WHO_Region                String
-  Geographical_Region       String
+  id Int @id @default(autoincrement())
+
+  Location            String
+  WHO_Region          String
+  Geographical_Region String
+  Parameter           Parameter[]
+  Outbreak            Outbreak[]
 }
