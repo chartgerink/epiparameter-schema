@@ -14,7 +14,6 @@ generator erd {
 model Parameter {
   id Int @id @default(autoincrement())
   Pathogen_ID   String
-  Epiparameter_ID   String
   EpiParameter_Type   String
   EpiParameter_Value_Type   String
   EpiParameter_Value   String
@@ -77,7 +76,6 @@ model Parameter {
 
 model Pathogen {
   id Int @id @default(autoincrement())
-  Pathogen_ID  String
   Pathogen_Name  String
   Pathogen_Description  String
   Pathogen_Type  String
@@ -90,7 +88,6 @@ model Pathogen {
 model Model {
   id Int @id @default(autoincrement())
   Pathogen_ID  String
-  Model_ID  String
   Model_Type  String
   Model_Stoh_Deter  String
   Model_Theoretical  String
@@ -103,7 +100,6 @@ model Model {
 
 model Article {
   id Int @id @default(autoincrement())
-  Article_ID  String
   Person_First_Name  String
   Person_Last_Name  String
   Article_Title  String
@@ -123,7 +119,6 @@ model Article {
 model Outbreak {
   id Int @id @default(autoincrement())
   Pathogen_ID  String
-  Outbreak_ID  String
   Outbreak_Start_date  String
   Outbreak_End_date  String
   Outbreak_Size  String
