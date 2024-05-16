@@ -1,3 +1,6 @@
+// https://www.prisma.io/docs/orm/reference/prisma-schema-reference#float
+// https://github.com/mrc-ide/priority-pathogens/wiki/
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
@@ -15,14 +18,18 @@ enum ParameterType {
   CaseFatalityRate
 }
 
+enum ValueType {
+    Mean
+}
+
 model Parameter {
   id                                       Int           @id @default(autoincrement())
   pathogen                                 Pathogen      @relation(fields: [pathogenId], references: [id])
-  type                                     ParameterType
-  Value_Type                               String
-  Value                                    String
-  Value_Lower_bound                        String
-  Value_Upper_bound                        String
+  parameterType                                     ParameterType
+  valueType                               ValueType
+  Value                                    Float
+  valueLowerBound                        Float
+  valueUpperBound                        Float
   Extrinsic                                String
   Unit                                     String
   Uncertainty_Paired_Type                  String
@@ -73,11 +80,11 @@ model Parameter {
   region                                   Region        @relation(fields: [regionId], references: [id])
   outbreak                                 Outbreak      @relation(fields: [outbreakId], references: [id])
   models                                   Model         @relation(fields: [modelId], references: [id])
-  article                                  Article       @relation(fields: [articleId], references: [id])
+  source                                  Source       @relation(fields: [sourceId], references: [id])
   pathogenId                               Int
   outbreakId                               Int
   modelId                                  Int
-  articleId                                Int
+  sourceId                                Int
   regionId                                 Int
 }
 
@@ -92,7 +99,7 @@ model Pathogen {
   Disease_Vector_borne String
   Parameter            Parameter[]
   Model                Model[]
-  Article              Article[]
+  Source              Source[]
   Outbreak             Outbreak[]
 }
 
