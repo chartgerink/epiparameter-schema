@@ -11,10 +11,14 @@ generator erd {
   provider = "prisma-erd-generator"
 }
 
+enum ParameterType {
+    CaseFatalityRate
+}
+
 model Parameter {
   id                                       Int      @id @default(autoincrement())
   pathogen                                 Pathogen @relation(fields: [pathogenId], references: [id])
-  Type                                     String
+  type                                     ParameterType
   Value_Type                               String
   Value                                    String
   Value_Lower_bound                        String
