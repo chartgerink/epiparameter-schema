@@ -113,30 +113,30 @@ model Model {
 }
 
 model Article {
-  id                             Int         @id @default(autoincrement())
-  Person_First_Name              String
-  Person_Last_Name               String
-  Title                          String
-  DOI                            String
-  PMID                           String
-  Paper_copy_only                String
-  Page_First                     String
-  Page_Last                      String
-  Volume                         String
-  Study_Type                     String
-  Publication_Type               String
-  Journal_Name                   String
-  published DateTime
-  ID                             Pathogen    @relation(fields: [pathogenId], references: [id])
-  Parameter                      Parameter[]
-  pathogenId                     Int
+  id                Int         @id @default(autoincrement())
+  Person_First_Name String
+  Person_Last_Name  String
+  Title             String
+  DOI               String
+  PMID              String
+  Paper_copy_only   String
+  Page_First        String
+  Page_Last         String
+  Volume            String
+  Study_Type        String
+  Publication_Type  String
+  Journal_Name      String
+  published         DateTime
+  ID                Pathogen    @relation(fields: [pathogenId], references: [id])
+  Parameter         Parameter[]
+  pathogenId        Int
 }
 
 model Outbreak {
   id                        Int         @id @default(autoincrement())
   ID                        Pathogen    @relation(fields: [pathogenId], references: [id])
-  start                DateTime
-  end                  DateTime
+  start                     DateTime
+  end                       DateTime
   Size                      String
   Asymptomatic_transmission String
   Cases_confirmed           String
