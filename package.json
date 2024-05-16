@@ -1,0 +1,27 @@
+{
+  "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^10.9.0",
+    "prisma": "^5.14.0",
+    "prisma-erd-generator": "^1.11.2"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.14.0"
+  },
+  "name": "epiparameter-schema",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chartgerink/epiparameter-schema.git"
+  },
+  "author": "",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/chartgerink/epiparameter-schema/issues"
+  },
+  "homepage": "https://github.com/chartgerink/epiparameter-schema#readme"
+}
