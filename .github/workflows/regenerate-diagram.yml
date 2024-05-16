@@ -29,10 +29,9 @@ jobs:
         - name: Generate Prisma diagram
           run: npx prisma generate
 
-        - name: Commit and push changes
-          run: |
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            git add ERD.svg
-            git commit -m "Regenerate Prisma diagram" || exit 0
-            git push
+        - uses: EndBug/add-and-commit@v9
+          with:
+            author_name: github-action-bot
+            author_email: github-action-bot@users.noreply.github.com
+            message: "Update `ERD.svg`"
+            add: './ERD.svg'
