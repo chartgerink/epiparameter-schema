@@ -12,124 +12,138 @@ generator erd {
 }
 
 model Parameter {
-  id Int @id @default(autoincrement())
-  Pathogen_ID   String
-  EpiParameter_Type   String
-  EpiParameter_Value_Type   String
-  EpiParameter_Value   String
-  EpiParameter_Value_Lower_bound   String
-  EpiParameter_Value_Upper_bound   String
-  EpiParameter_Extrinsic   String
-  EpiParameter_Unit   String
-  EpiParameter_Uncertainty_Paired_Type   String
-  EpiParameter_Uncertainty_Paired_Lower_value   String
-  EpiParameter_Uncertainty_Paired_Upper_value   String
-  EpiParameter_Uncertainty_Single_Type   String
-  EpiParameter_Uncertainty_Single_value   String
-  EpiParameter_Distribution_Discretised   String
-  EpiParameter_Distribution_type   String
-  EpiParameter_Distribution_type_Parameter1   String
-  EpiParameter_Distribution_type_Parameter_value1   String
-  EpiParameter_Distribution_type_Parameter_uncertainty1   String
-  EpiParameter_Distribution_type_Parameter_limit1   String
-  EpiParameter_Distribution_type_Parameter_interval1   String
-  EpiParameter_Distribution_type_Parameter2   String
-  EpiParameter_Distribution_type_Parameter_value2   String
-  EpiParameter_Distribution_type_Parameter_uncertainty2   String
-  EpiParameter_Distribution_type_Parameter_limit2   String
-  EpiParameter_Distribution_type_Parameter_interval2   String
-  EpiParameter_Distribution_Quantile_Type   String
-  EpiParameter_Distribution_Quantile_Type_Value   String
-  EpiParameter_Method_CFR_IFR   String
-  EpiParameter_Numerator_CFR_IFR   String
-  EpiParameter_Denominator_CFR_IFR   String
-  EpiParameter_Method_Moment   String
-  EpiParameter_Method_Reproduction_number   String
-  EpiParameter_Method_from_supplement   String
-  EpiParameter_Method_disaggregated_by   String
-  EpiParameter_Method_disaggregated   String
-  EpiParameter_Method_disaggregated_only   String
-  EpiParameter_Method_inferred_Censorred   String
-  EpiParameter_Method_inferred_Right_truncated   String
-  EpiParameter_Method_inferred_Bias_adjusted   String
-  EpiParameter_Genomic_data_gene   String
-  EpiParameter_Genomic_sequence_available   String
-  EpiParameter_Population_Type   String
-  EpiParameter_Population_Sample_Size   String
-  EpiParameter_Population_Study_Start_date   String
-  EpiParameter_Population_Study_End_date   String
-  EpiParameter_Population_Group   String
-  EpiParameter_Population_Age_min   String
-  EpiParameter_Population_Age_max   String
-  EpiParameter_Risk_factor_Name   String
-  EpiParameter_Risk_factor_Outcome   String
-  EpiParameter_Risk_factor_Occupation   String
-  EpiParameter_Risk_factor_Significance   String
-  EpiParameter_Risk_factor_Adjust   String
-  EpiParameter_Location   String
-  EpiParameter_WHO_Region   String
-  EpiParameter_Geographical_Region   String
-  Outbreak_ID   String
-  Model_ID   String
-  Article_ID   String
+  id                                                    Int      @id @default(autoincrement())
+  Pathogen_ID                                           Pathogen @relation(fields: [pathogenId], references: [id])
+  EpiParameter_Type                                     String
+  EpiParameter_Value_Type                               String
+  EpiParameter_Value                                    String
+  EpiParameter_Value_Lower_bound                        String
+  EpiParameter_Value_Upper_bound                        String
+  EpiParameter_Extrinsic                                String
+  EpiParameter_Unit                                     String
+  EpiParameter_Uncertainty_Paired_Type                  String
+  EpiParameter_Uncertainty_Paired_Lower_value           String
+  EpiParameter_Uncertainty_Paired_Upper_value           String
+  EpiParameter_Uncertainty_Single_Type                  String
+  EpiParameter_Uncertainty_Single_value                 String
+  EpiParameter_Distribution_Discretised                 String
+  EpiParameter_Distribution_type                        String
+  EpiParameter_Distribution_type_Parameter1             String
+  EpiParameter_Distribution_type_Parameter_value1       String
+  EpiParameter_Distribution_type_Parameter_uncertainty1 String
+  EpiParameter_Distribution_type_Parameter_limit1       String
+  EpiParameter_Distribution_type_Parameter_interval1    String
+  EpiParameter_Distribution_type_Parameter2             String
+  EpiParameter_Distribution_type_Parameter_value2       String
+  EpiParameter_Distribution_type_Parameter_uncertainty2 String
+  EpiParameter_Distribution_type_Parameter_limit2       String
+  EpiParameter_Distribution_type_Parameter_interval2    String
+  EpiParameter_Distribution_Quantile_Type               String
+  EpiParameter_Distribution_Quantile_Type_Value         String
+  EpiParameter_Method_CFR_IFR                           String
+  EpiParameter_Numerator_CFR_IFR                        String
+  EpiParameter_Denominator_CFR_IFR                      String
+  EpiParameter_Method_Moment                            String
+  EpiParameter_Method_Reproduction_number               String
+  EpiParameter_Method_from_supplement                   String
+  EpiParameter_Method_disaggregated_by                  String
+  EpiParameter_Method_disaggregated                     String
+  EpiParameter_Method_disaggregated_only                String
+  EpiParameter_Method_inferred_Censorred                String
+  EpiParameter_Method_inferred_Right_truncated          String
+  EpiParameter_Method_inferred_Bias_adjusted            String
+  EpiParameter_Genomic_data_gene                        String
+  EpiParameter_Genomic_sequence_available               String
+  EpiParameter_Population_Type                          String
+  EpiParameter_Population_Sample_Size                   String
+  EpiParameter_Population_Study_Start_date              String
+  EpiParameter_Population_Study_End_date                String
+  EpiParameter_Population_Group                         String
+  EpiParameter_Population_Age_min                       String
+  EpiParameter_Population_Age_max                       String
+  EpiParameter_Risk_factor_Name                         String
+  EpiParameter_Risk_factor_Outcome                      String
+  EpiParameter_Risk_factor_Occupation                   String
+  EpiParameter_Risk_factor_Significance                 String
+  EpiParameter_Risk_factor_Adjust                       String
+  EpiParameter_Location                                 String
+  EpiParameter_WHO_Region                               String
+  EpiParameter_Geographical_Region                      String
+  Outbreak_ID                                           Outbreak @relation(fields: [outbreakId], references: [id])
+  Model_ID                                              Model    @relation(fields: [modelId], references: [id])
+  Article_ID                                            Article  @relation(fields: [articleId], references: [id])
+  pathogenId                                            Int
+  outbreakId                                            Int
+  modelId                                               Int
+  articleId                                             Int
 }
 
 model Pathogen {
-  id Int @id @default(autoincrement())
-  Pathogen_Name  String
-  Pathogen_Description  String
-  Pathogen_Type  String
-  Pathogen_Family  String
-  Pathogen_Strain_Name  String
-  Pathogen_Disease_Name  String
-  Pathogen_Disease_Vector_borne  String
+  id                            Int         @id @default(autoincrement())
+  Pathogen_Name                 String
+  Pathogen_Description          String
+  Pathogen_Type                 String
+  Pathogen_Family               String
+  Pathogen_Strain_Name          String
+  Pathogen_Disease_Name         String
+  Pathogen_Disease_Vector_borne String
+  Parameter                     Parameter[]
+  Model                         Model[]
+  Article                       Article[]
+  Outbreak                      Outbreak[]
 }
 
 model Model {
-  id Int @id @default(autoincrement())
-  Pathogen_ID  String
-  Model_Type  String
-  Model_Stoh_Deter  String
-  Model_Theoretical  String
-  Model_Code_available  String
-  Model_Compartmental_Type  String
-  Model_Interventions_Type  String
-  Model_Transmission_Route  String
-  Model_Assumption  String
+  id                       Int         @id @default(autoincrement())
+  Pathogen_ID              Pathogen    @relation(fields: [pathogenId], references: [id])
+  Model_Type               String
+  Model_Stoh_Deter         String
+  Model_Theoretical        String
+  Model_Code_available     String
+  Model_Compartmental_Type String
+  Model_Interventions_Type String
+  Model_Transmission_Route String
+  Model_Assumption         String
+  Parameter                Parameter[]
+  pathogenId               Int
 }
 
 model Article {
-  id Int @id @default(autoincrement())
-  Person_First_Name  String
-  Person_Last_Name  String
-  Article_Title  String
-  Article_DOI  String
-  Article_PMID  String
-  Article_Paper_copy_only  String
-  Article_Page_First  String
-  Article_Page_Last  String
-  Article_Volume  String
-  Article_Study_Type  String
-  Article_Publication_Type  String
-  Journal_Name  String
-  Journal_issue_Publication_date  String
-  Pathogen_ID  String
+  id                             Int         @id @default(autoincrement())
+  Person_First_Name              String
+  Person_Last_Name               String
+  Article_Title                  String
+  Article_DOI                    String
+  Article_PMID                   String
+  Article_Paper_copy_only        String
+  Article_Page_First             String
+  Article_Page_Last              String
+  Article_Volume                 String
+  Article_Study_Type             String
+  Article_Publication_Type       String
+  Journal_Name                   String
+  Journal_issue_Publication_date String
+  Pathogen_ID                    Pathogen    @relation(fields: [pathogenId], references: [id])
+  Parameter                      Parameter[]
+  pathogenId                     Int
 }
 
 model Outbreak {
-  id Int @id @default(autoincrement())
-  Pathogen_ID  String
-  Outbreak_Start_date  String
-  Outbreak_End_date  String
-  Outbreak_Size  String
-  Outbreak_Asymptomatic_transmission  String
-  Outbreak_Cases_confirmed  String
-  Outbreak_Cases_suspected  String
-  Outbreak_Cases_asymptomatic  String
-  Outbreak_Cases_Severe_hospitalized  String
-  Outbreak_Cases_Deaths  String
-  Outbreak_Case_Mode_Detection  String
-  Outbreak_Location  String
-  Outbreak_WHO_Region  String
-  Outbreak_Geographical_Region  String
+  id                                 Int         @id @default(autoincrement())
+  Pathogen_ID                        Pathogen    @relation(fields: [pathogenId], references: [id])
+  Outbreak_Start_date                String
+  Outbreak_End_date                  String
+  Outbreak_Size                      String
+  Outbreak_Asymptomatic_transmission String
+  Outbreak_Cases_confirmed           String
+  Outbreak_Cases_suspected           String
+  Outbreak_Cases_asymptomatic        String
+  Outbreak_Cases_Severe_hospitalized String
+  Outbreak_Cases_Deaths              String
+  Outbreak_Case_Mode_Detection       String
+  Outbreak_Location                  String
+  Outbreak_WHO_Region                String
+  Outbreak_Geographical_Region       String
+  Parameter                          Parameter[]
+  pathogenId                         Int
 }
