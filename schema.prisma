@@ -111,7 +111,7 @@ model Model {
   pathogenId         Int
 }
 
-model Article {
+model Source {
   id                Int         @id @default(autoincrement())
   Person_First_Name String
   Person_Last_Name  String
