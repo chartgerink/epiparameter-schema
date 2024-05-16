@@ -12,12 +12,12 @@ generator erd {
 }
 
 enum ParameterType {
-    CaseFatalityRate
+  CaseFatalityRate
 }
 
 model Parameter {
-  id                                       Int      @id @default(autoincrement())
-  pathogen                                 Pathogen @relation(fields: [pathogenId], references: [id])
+  id                                       Int           @id @default(autoincrement())
+  pathogen                                 Pathogen      @relation(fields: [pathogenId], references: [id])
   type                                     ParameterType
   Value_Type                               String
   Value                                    String
@@ -73,9 +73,9 @@ model Parameter {
   Location                                 String
   WHO_Region                               String
   Geographical_Region                      String
-  outbreak                                 Outbreak @relation(fields: [outbreakId], references: [id])
-  models                                   Model    @relation(fields: [modelId], references: [id])
-  article                                  Article  @relation(fields: [articleId], references: [id])
+  outbreak                                 Outbreak      @relation(fields: [outbreakId], references: [id])
+  models                                   Model         @relation(fields: [modelId], references: [id])
+  article                                  Article       @relation(fields: [articleId], references: [id])
   pathogenId                               Int
   outbreakId                               Int
   modelId                                  Int
@@ -126,7 +126,7 @@ model Article {
   Study_Type                     String
   Publication_Type               String
   Journal_Name                   String
-  Journal_issue_Publication_date DateTime
+  published DateTime
   ID                             Pathogen    @relation(fields: [pathogenId], references: [id])
   Parameter                      Parameter[]
   pathogenId                     Int
@@ -135,8 +135,8 @@ model Article {
 model Outbreak {
   id                        Int         @id @default(autoincrement())
   ID                        Pathogen    @relation(fields: [pathogenId], references: [id])
-  Start_date                DateTime
-  End_date                  DateTime
+  start                DateTime
+  end                  DateTime
   Size                      String
   Asymptomatic_transmission String
   Cases_confirmed           String
