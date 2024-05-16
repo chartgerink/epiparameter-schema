@@ -5,7 +5,7 @@ on:
         branches:
             - main
         paths:
-            - 'ERD.svg'
+            - 'schema.prisma'
     workflow_dispatch:
 
 jobs:
