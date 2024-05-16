@@ -105,7 +105,6 @@ model Pathogen {
 
 model Model {
   id                 Int         @id @default(autoincrement())
-  ID                 Pathogen    @relation(fields: [pathogenId], references: [id])
   Type               String
   Stoh_Deter         String
   Theoretical        String
@@ -115,6 +114,7 @@ model Model {
   Transmission_Route String
   Assumption         String
   Parameter          Parameter[]
+  pathogen                 Pathogen    @relation(fields: [pathogenId], references: [id])
   pathogenId         Int
 }
 
@@ -140,7 +140,7 @@ model Source {
 
 model Outbreak {
   id                        Int      @id @default(autoincrement())
-  ID                        Pathogen @relation(fields: [pathogenId], references: [id])
+  pathogen                        Pathogen @relation(fields: [pathogenId], references: [id])
   start                     DateTime
   end                       DateTime
   Size                      String
