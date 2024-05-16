@@ -60,8 +60,8 @@ model Parameter {
   Genomic_sequence_available               String
   Population_Type                          String
   Population_Sample_Size                   String
-  Population_Study_Start_date              String
-  Population_Study_End_date                String
+  Population_Study_Start_date              DateTime
+  Population_Study_End_date                DateTime
   Population_Group                         String
   Population_Age_min                       String
   Population_Age_max                       String
@@ -126,7 +126,7 @@ model Article {
   Study_Type                     String
   Publication_Type               String
   Journal_Name                   String
-  Journal_issue_Publication_date String
+  Journal_issue_Publication_date DateTime
   ID                             Pathogen    @relation(fields: [pathogenId], references: [id])
   Parameter                      Parameter[]
   pathogenId                     Int
@@ -135,8 +135,8 @@ model Article {
 model Outbreak {
   id                        Int         @id @default(autoincrement())
   ID                        Pathogen    @relation(fields: [pathogenId], references: [id])
-  Start_date                String
-  End_date                  String
+  Start_date                DateTime
+  End_date                  DateTime
   Size                      String
   Asymptomatic_transmission String
   Cases_confirmed           String
