@@ -70,9 +70,7 @@ model Parameter {
   Risk_factor_Occupation                   String
   Risk_factor_Significance                 String
   Risk_factor_Adjust                       String
-  Location                                 String
-  WHO_Region                               String
-  Geographical_Region                      String
+  region Region
   outbreak                                 Outbreak      @relation(fields: [outbreakId], references: [id])
   models                                   Model         @relation(fields: [modelId], references: [id])
   article                                  Article       @relation(fields: [articleId], references: [id])
@@ -145,9 +143,14 @@ model Outbreak {
   Cases_Severe_hospitalized String
   Cases_Deaths              String
   Case_Mode_Detection       String
+  region Region
+
+  Parameter                 Parameter[]
+  pathogenId                Int
+}
+
+model Region {
   Location                  String
   WHO_Region                String
   Geographical_Region       String
-  Parameter                 Parameter[]
-  pathogenId                Int
 }
